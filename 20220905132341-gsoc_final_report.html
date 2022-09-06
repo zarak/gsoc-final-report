@@ -1,1 +1,458 @@
-/home/zarak/Dropbox/org/roam/20220905132341-gsoc_final_report.html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-06 Tue 16:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GSoC Final Report</title>
+<meta name="author" content="Zarak Mahmud" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">GSoC Final Report</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0128799">1. Overview</a>
+<ul>
+<li><a href="#org91e34df">1.1. I used docker instead of nix for the developer environment.</a></li>
+<li><a href="#orgfb4d077">1.2. Although I anticipated using Hasktorch&rsquo;s typed API, I settled for the untyped API with newtype wrappers. This way I could carry type information</a></li>
+</ul>
+</li>
+<li><a href="#org731a23c">2. Working Period</a>
+<ul>
+<li><a href="#org914dde2">2.1. Developer setup</a></li>
+<li><a href="#orgf5da6a9">2.2. Goal Core</a>
+<ul>
+<li><a href="#org9030881">2.2.1. Test suite</a></li>
+</ul>
+</li>
+<li><a href="#org7226317">2.3. Goal Geometry</a>
+<ul>
+<li><a href="#orgca317c9">2.3.1. Runtime exceptions</a></li>
+<li><a href="#org6eb43b3">2.3.2. Performance benchmarks</a></li>
+<li><a href="#orgc13d620">2.3.3. Profiling found an inefficient implementation</a></li>
+</ul>
+</li>
+<li><a href="#orgc4c2334">2.4. Goal Probability</a>
+<ul>
+<li><a href="#orgee0095b">2.4.1. Using hasktorch to generate random tensors</a></li>
+<li><a href="#orgf8c3598">2.4.2. Run time exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org18b5a55">3. Challenges</a>
+<ul>
+<li><a href="#orgedb235c">3.1. What should I use as a container of <code>Vector</code> s?</a></li>
+</ul>
+</li>
+<li><a href="#org71e2a75">4. Future Work</a>
+<ul>
+<li><a href="#org0735d9a">4.1. Developer setup</a></li>
+<li><a href="#org790f277">4.2. Finish Core Functions</a>
+<ul>
+<li><a href="#org77f5e46">4.2.1. <code>pseudo inverse</code></a></li>
+</ul>
+</li>
+<li><a href="#org9b19e80">4.3. Fix logic error in neural-networks script</a></li>
+<li><a href="#orgdb8a1fd">4.4. Improve performance in backprop benchmark</a>
+<ul>
+<li><a href="#orgdbc1023">4.4.1. Start with forward pass</a></li>
+<li><a href="#orgf5686fd">4.4.2. Then do Backprop</a></li>
+</ul>
+</li>
+<li><a href="#org735d765">4.5. How is the performance of a Boxed vector for a collection of Points?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0128799" class="outline-2">
+<h2 id="org0128799"><span class="section-number-2">1.</span> Overview</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org91e34df" class="outline-3">
+<h3 id="org91e34df"><span class="section-number-3">1.1.</span> I used docker instead of nix for the developer environment.</h3>
+</div>
+<div id="outline-container-orgfb4d077" class="outline-3">
+<h3 id="orgfb4d077"><span class="section-number-3">1.2.</span> Although I anticipated using Hasktorch&rsquo;s typed API, I settled for the untyped API with newtype wrappers. This way I could carry type information</h3>
+</div>
+</div>
+<div id="outline-container-org731a23c" class="outline-2">
+<h2 id="org731a23c"><span class="section-number-2">2.</span> Working Period</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org914dde2" class="outline-3">
+<h3 id="org914dde2"><span class="section-number-3">2.1.</span> Developer setup</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+I originally planned to create a nix shell for development. During the proposal period I experimented with Hasktorch and Goal using a nix <a href="https://github.com/zarak/glowing-train">template</a> provided by Hastorch. Ultimately, however, we settled on Docker for the dev environment, as it may be more straightforward to use with <a href="https://apptainer.org/">Apptainer</a> for HPC tasks. The final docker image clocked in at over 14 GB in size. I tried to reduce this but only managed to trim off about half a gigabyte.
+</p>
+<pre class="example">
+zarak@nixos ~ ❯ docker history f71d81c4404d
+IMAGE          CREATED        CREATED BY                                      SIZE      COMMENT
+f71d81c4404d   2 months ago   /bin/bash -c #(nop)  CMD ["/bin/bash"]          0B
+153417880ada   2 months ago   /bin/bash -c #(nop)  ENV PATH=/usr/local/bin…   0B
+116decd9c5a0   2 months ago   /bin/bash -c #(nop)  ENV NVIDIA_DRIVER_CAPAB…   0B
+ea3546bf7926   2 months ago   /bin/bash -c #(nop)  ENV NVIDIA_VISIBLE_DEVI…   0B
+c55774b975f8   2 months ago   |4 CABAL=latest DEBIAN_FRONTEND=noninteracti…   4.03GB
+3e713b88518a   2 months ago   /bin/bash -c #(nop) COPY file:1642f81b2fc032…   1.22kB
+b354f7d1e1be   2 months ago   |4 CABAL=latest DEBIAN_FRONTEND=noninteracti…   66.9kB
+bee356d14e95   2 months ago   /bin/bash -c #(nop)  SHELL [/bin/bash -c]       0B
+8bb54779d991   2 months ago   |4 CABAL=latest DEBIAN_FRONTEND=noninteracti…   20MB
+1a9db6f64989   2 months ago   |4 CABAL=latest DEBIAN_FRONTEND=noninteracti…   3.8GB
+7009ce892ba2   2 months ago   |4 CABAL=latest DEBIAN_FRONTEND=noninteracti…   4.78GB
+1c62275ed751   2 months ago   /bin/sh -c #(nop)  ARG CABAL=latest             0B
+231a648e7653   2 months ago   /bin/sh -c #(nop)  ARG GHC=9.0.2                0B
+a8e5be427c4f   2 months ago   |2 DEBIAN_FRONTEND=noninteractive GPG_KEY=77…   15.4MB
+6be00d62872f   2 months ago   |2 DEBIAN_FRONTEND=noninteractive GPG_KEY=77…   3.29kB
+01c26ac2d371   2 months ago   /bin/sh -c #(nop)  ARG GPG_KEY=7784930957807…   0B
+9db92454b75e   2 months ago   |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c…   1.54GB
+6f33782b4774   2 months ago   /bin/sh -c #(nop)  ENV BLAS=OpenBlas            0B
+56468c103876   2 months ago   /bin/sh -c #(nop)  ENV TZ=Europe/Berlin         0B
+1f2add153ab6   2 months ago   /bin/sh -c #(nop)  ARG DEBIAN_FRONTEND=nonin…   0B
+20fffa419e3a   3 months ago   /bin/sh -c #(nop)  CMD ["bash"]                 0B
+&lt;missing&gt;      3 months ago   /bin/sh -c #(nop) ADD file:00dae10e79b05c4e1…   72.8MB
+</pre>
+<p>
+Another concern is that this docker image does not cache the Hasktorch library build artifacts, which means that I have to rebuild all of Hasktorch each time I run a fresh instance of the container. If I left the container running, libtorch would occasionally stop detecting the GPU, which necessitated a container restart and hence rebuild. At this point, however, I would proceed with the meat of the project.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf5da6a9" class="outline-3">
+<h3 id="orgf5da6a9"><span class="section-number-3">2.2.</span> Goal Core</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Core primarily contains functions that are thin wrappers around their Hasktorch counterparts in <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Vector.hs">Vector.hs</a>. If a required function was not provided by Hasktorch, I wrote it using Hasktorch primitives.
+</p>
+
+<p>
+For example, <code>scale</code> is a thin wrapper around Hasktorch&rsquo;s <code>mulScale</code> function:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #87ceeb;">scale</span> <span style="color: #c7c9cb;">::</span> <span style="color: #b877db;">Scalar</span> x <span style="color: #c7c9cb;">=&gt;</span> x <span style="color: #c7c9cb;">-&gt;</span> <span style="color: #b877db;">Vector</span> n a d <span style="color: #c7c9cb;">-&gt;</span> <span style="color: #b877db;">Vector</span> n a d
+<span style="color: #87ceeb; font-weight: bold;">{-# INLINE scale  #-}</span>
+<span style="color: #87ceeb;">scale</span> x <span style="color: #c7c9cb;">=</span> <span style="color: #fab795;">UnsafeVector</span> <span style="color: #c7c9cb;">.</span> mulScalar x <span style="color: #c7c9cb;">.</span> toTorch
+</pre>
+</div>
+
+<p>
+On the other hand, I used <code>einsum</code> to implement <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Vector.hs#L481-488">a function to compute the outer product</a>, as this was not available natively in Hasktorch:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #87ceeb;">outerProduct</span>
+    <span style="color: #c7c9cb;">::</span> (<span style="color: #b877db;">KnownNat</span> m, <span style="color: #b877db;">KnownNat</span> n, <span style="color: #b877db;">Num</span> x)
+    <span style="color: #c7c9cb;">=&gt;</span> <span style="color: #b877db;">Vector</span> m x d
+    <span style="color: #c7c9cb;">-&gt;</span> <span style="color: #b877db;">Vector</span> n x d
+    <span style="color: #c7c9cb;">-&gt;</span> <span style="color: #b877db;">Matrix</span> m n x d
+<span style="color: #87ceeb; font-weight: bold;">{-# INLINE outerProduct #-}</span>
+<span style="color: #87ceeb;">outerProduct</span> v1 v2 <span style="color: #c7c9cb;">=</span>
+    <span style="color: #fab795;">Matrix</span> <span style="color: #c7c9cb;">$</span> <span style="color: #fab795;">UnsafeVector</span> <span style="color: #c7c9cb;">$</span> flattenAll <span style="color: #c7c9cb;">$</span> einsum <span style="color: #fab795;">"i,j-&gt;ij"</span> [toTorch v1, toTorch v2]
+</pre>
+</div>
+
+<p>
+Another example is <code>matrixRoot</code>, which I implemented by referring to the <code>hmatrix</code> source code:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #fab795; font-style: italic;">-- | Computes the square root of a 'Matrix' using Denman-Beavers iteration.</span>
+<span style="color: #fab795; font-style: italic;">-- A slightly modified version of the [implementation](https:</span><span style="color: #fab795; font-style: italic;">//</span><span style="color: #fab795; font-style: italic;">hackage.haskell.org</span><span style="color: #fab795; font-style: italic;">/package/</span><span style="color: #fab795; font-style: italic;">hmatrix-0.20.2</span><span style="color: #fab795; font-style: italic;">/docs/</span><span style="color: #fab795; font-style: italic;">src/Internal.Algorithms.html#sqrtmInv) in hmatrix-0.20.2.</span>
+<span style="color: #87ceeb;">matrixRoot</span>
+    <span style="color: #c7c9cb;">::</span> <span style="color: #b877db;">forall</span> n x d<span style="color: #c7c9cb;">.</span> (<span style="color: #b877db;">KnownNat</span> n, <span style="color: #b877db;">Num</span> x, <span style="color: #b877db;">Scalar</span> x, <span style="color: #b877db;">HasTensorOptions</span> x d)
+    <span style="color: #c7c9cb;">=&gt;</span> <span style="color: #b877db;">Matrix</span> n n x d
+    <span style="color: #c7c9cb;">-&gt;</span> <span style="color: #b877db;">Matrix</span> n n x d
+<span style="color: #87ceeb; font-weight: bold;">{-# INLINE matrixRoot #-}</span>
+<span style="color: #87ceeb;">matrixRoot</span> mtx <span style="color: #c7c9cb;">=</span> <span style="color: #fab795;">Matrix</span> <span style="color: #c7c9cb;">$</span> <span style="color: #fab795;">UnsafeVector</span> <span style="color: #c7c9cb;">$</span> flattenAll <span style="color: #c7c9cb;">$</span> fst <span style="color: #c7c9cb;">$</span> fixedPoint <span style="color: #c7c9cb;">$</span> iterate f (t, eyeSquare n opts)
+    <span style="color: #b877db;">where</span> n <span style="color: #c7c9cb;">=</span> natValInt (<span style="color: #fab795;">Proxy</span> <span style="color: #c7c9cb;">::</span> <span style="color: #b877db;">Proxy</span> n)
+          opts <span style="color: #c7c9cb;">=</span> tensorOpts (<span style="color: #fab795;">Proxy</span> <span style="color: #c7c9cb;">::</span> <span style="color: #b877db;">Proxy</span> x) (<span style="color: #fab795;">Proxy</span> <span style="color: #c7c9cb;">::</span> <span style="color: #b877db;">Proxy</span> d)
+          f (y, z) <span style="color: #c7c9cb;">=</span> (<span style="color: #f09383; font-weight: bold;">0.5</span> <span style="color: #c7c9cb;">*</span> (y <span style="color: #c7c9cb;">+</span> Torch.inverse z),
+                      <span style="color: #f09383; font-weight: bold;">0.5</span> <span style="color: #c7c9cb;">*</span> (Torch.inverse y <span style="color: #c7c9cb;">+</span> z))
+          t <span style="color: #c7c9cb;">=</span> reshape [n, n] <span style="color: #c7c9cb;">$</span> toTorch <span style="color: #c7c9cb;">$</span> toVector mtx
+          fixedPoint (a<span style="color: #fab795;">:</span>b<span style="color: #fab795;">:</span>rest) <span style="color: #c7c9cb;">|</span> asValue <span style="color: #c7c9cb;">$</span> le (l1Loss <span style="color: #fab795;">ReduceMean</span> (fst a) (fst b)) peps <span style="color: #c7c9cb;">=</span> a
+                                <span style="color: #c7c9cb;">|</span> otherwise <span style="color: #c7c9cb;">=</span> fixedPoint (b<span style="color: #fab795;">:</span>rest)
+          fixedPoint <span style="color: #b877db;">_</span> <span style="color: #c7c9cb;">=</span> error <span style="color: #fab795;">"fixed point with impossible inputs"</span>
+</pre>
+</div>
+<p>
+Unlike in the <code>hmatrix</code> version, however, when checking for convergence, I took the mean when computing the l1 norm rather than the sum of the absolute values because I sometimes failed to achieve convergence (even though I theoretically should have) using the latter reduction. This function wasn&rsquo;t critical within the scope of this project so I moved on.
+</p>
+</div>
+
+<div id="outline-container-org9030881" class="outline-4">
+<h4 id="org9030881"><span class="section-number-4">2.2.1.</span> Test suite</h4>
+</div>
+</div>
+<div id="outline-container-org7226317" class="outline-3">
+<h3 id="org7226317"><span class="section-number-3">2.3.</span> Goal Geometry</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgca317c9" class="outline-4">
+<h4 id="orgca317c9"><span class="section-number-4">2.3.1.</span> Runtime exceptions</h4>
+</div>
+<div id="outline-container-org6eb43b3" class="outline-4">
+<h4 id="org6eb43b3"><span class="section-number-4">2.3.2.</span> Performance benchmarks</h4>
+</div>
+<div id="outline-container-orgc13d620" class="outline-4">
+<h4 id="orgc13d620"><span class="section-number-4">2.3.3.</span> Profiling found an inefficient implementation</h4>
+</div>
+</div>
+<div id="outline-container-orgc4c2334" class="outline-3">
+<h3 id="orgc4c2334"><span class="section-number-3">2.4.</span> Goal Probability</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-orgee0095b" class="outline-4">
+<h4 id="orgee0095b"><span class="section-number-4">2.4.1.</span> Using hasktorch to generate random tensors</h4>
+</div>
+<div id="outline-container-orgf8c3598" class="outline-4">
+<h4 id="orgf8c3598"><span class="section-number-4">2.4.2.</span> Run time exceptions</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org18b5a55" class="outline-2">
+<h2 id="org18b5a55"><span class="section-number-2">3.</span> Challenges</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgedb235c" class="outline-3">
+<h3 id="orgedb235c"><span class="section-number-3">3.1.</span> What should I use as a container of <code>Vector</code> s?</h3>
+</div>
+</div>
+
+<div id="outline-container-org71e2a75" class="outline-2">
+<h2 id="org71e2a75"><span class="section-number-2">4.</span> Future Work</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org0735d9a" class="outline-3">
+<h3 id="org0735d9a"><span class="section-number-3">4.1.</span> Developer setup</h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>Use nix to provide a developer environment for Goal, similar to the template Hasktorch provides.</li>
+<li>Cache the Hasktorch build artifacts in docker to dramatically reduce build times.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org790f277" class="outline-3">
+<h3 id="org790f277"><span class="section-number-3">4.2.</span> Finish Core Functions</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org77f5e46" class="outline-4">
+<h4 id="org77f5e46"><span class="section-number-4">4.2.1.</span> <code>pseudo inverse</code></h4>
+</div>
+</div>
+<div id="outline-container-org9b19e80" class="outline-3">
+<h3 id="org9b19e80"><span class="section-number-3">4.3.</span> Fix logic error in neural-networks script</h3>
+</div>
+<div id="outline-container-orgdb8a1fd" class="outline-3">
+<h3 id="orgdb8a1fd"><span class="section-number-3">4.4.</span> Improve performance in backprop benchmark</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+<div id="outline-container-orgdbc1023" class="outline-4">
+<h4 id="orgdbc1023"><span class="section-number-4">4.4.1.</span> Start with forward pass</h4>
+</div>
+<div id="outline-container-orgf5686fd" class="outline-4">
+<h4 id="orgf5686fd"><span class="section-number-4">4.4.2.</span> Then do Backprop</h4>
+</div>
+</div>
+<div id="outline-container-org735d765" class="outline-3">
+<h3 id="org735d765"><span class="section-number-3">4.5.</span> How is the performance of a Boxed vector for a collection of Points?</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zarak Mahmud</p>
+<p class="date">Created: 2022-09-06 Tue 16:12</p>
+</div>
+</body>
+</html>
