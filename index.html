@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-07 Wed 20:46 -->
+<!-- 2022-09-07 Wed 21:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GSoC Final Report</title>
+<title>Google Summer of Code Final Report</title>
 <meta name="author" content="Zarak Mahmud" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -199,58 +199,63 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">GSoC Final Report</h1>
+<h1 class="title">Google Summer of Code Final Report</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8cf1444">1. Overview</a></li>
-<li><a href="#org164c65f">2. Working Period</a>
+<li><a href="#org2e49c2a">1. Overview</a></li>
+<li><a href="#orgd21be97">2. Working Period</a>
 <ul>
-<li><a href="#org2ec79f9">2.1. Developer setup</a></li>
-<li><a href="#org5a4fda7">2.2. Goal Core</a>
+<li><a href="#orgc1e035c">2.1. Developer setup</a></li>
+<li><a href="#org2a103e0">2.2. Goal Core</a>
 <ul>
-<li><a href="#org0eec892">2.2.1. Test suite</a></li>
+<li><a href="#org26de63d">2.2.1. Test suite</a></li>
 </ul>
 </li>
-<li><a href="#org1984c46">2.3. Goal Geometry</a>
+<li><a href="#org9c5283e">2.3. Goal Geometry</a>
 <ul>
-<li><a href="#org1da1c74">2.3.1. Runtime exceptions</a></li>
-<li><a href="#orgbfd6c30">2.3.2. Performance benchmarks</a></li>
-<li><a href="#org258dd0c">2.3.3. Profiling</a></li>
+<li><a href="#orgbbf7fa0">2.3.1. Runtime exceptions</a></li>
+<li><a href="#org874bae8">2.3.2. Benchmarks</a></li>
+<li><a href="#org944fd5b">2.3.3. Profiling</a></li>
 </ul>
 </li>
-<li><a href="#orga523a3a">2.4. Goal Probability</a>
+<li><a href="#orge84d15f">2.4. Goal Probability</a>
 <ul>
-<li><a href="#org82baaed">2.4.1. Random tensors</a></li>
-<li><a href="#org4781f3c">2.4.2. Runtime exceptions</a></li>
-<li><a href="#org761cdc6">2.4.3. Profiling</a></li>
+<li><a href="#orgc12bd0b">2.4.1. Random tensors</a></li>
+<li><a href="#org8f0efbd">2.4.2. Runtime exceptions</a></li>
+<li><a href="#org513da9b">2.4.3. Benchmarks</a></li>
+<li><a href="#orgddcc928">2.4.4. Profiling</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1dfceee">3. Future Work</a></li>
+<li><a href="#org04194d1">3. Future Work</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8cf1444" class="outline-2">
-<h2 id="org8cf1444"><span class="section-number-2">1.</span> Overview</h2>
+<div id="outline-container-org2e49c2a" class="outline-2">
+<h2 id="org2e49c2a"><span class="section-number-2">1.</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
+
+<div id="orgb4fb9a4" class="figure">
+<p><img src="./haskell-logo.svg" alt="haskell-logo.svg" class="org-svg" />
+</p>
+</div>
+
 <p>
-I used docker instead of nix for the developer environment.
-Although I anticipated using Hasktorch&rsquo;s typed API, I settled for the untyped API with newtype wrappers. This way I could carry type information
-All commits were made to the <a href="https://gitlab.com/sacha-sokoloski/goal/-/tree/experimental">experimental branch</a>.
+This is the final report for a <a href="https://summerofcode.withgoogle.com/programs/2022/projects/4WYrEknl">proposal</a> in the Haskell organization to enhance the <code>Goal</code> library with GPU operations. All commits were made to the <a href="https://gitlab.com/sacha-sokoloski/goal/-/tree/experimental">experimental branch</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org164c65f" class="outline-2">
-<h2 id="org164c65f"><span class="section-number-2">2.</span> Working Period</h2>
+<div id="outline-container-orgd21be97" class="outline-2">
+<h2 id="orgd21be97"><span class="section-number-2">2.</span> Working Period</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2ec79f9" class="outline-3">
-<h3 id="org2ec79f9"><span class="section-number-3">2.1.</span> Developer setup</h3>
+<div id="outline-container-orgc1e035c" class="outline-3">
+<h3 id="orgc1e035c"><span class="section-number-3">2.1.</span> Developer setup</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 I originally planned to create a nix shell for development. During the proposal period I experimented with Hasktorch and Goal using a nix <a href="https://github.com/zarak/glowing-train">template</a> provided by Hastorch. Ultimately, however, we settled on Docker for the dev environment, as it may be more straightforward to use with <a href="https://apptainer.org/">Apptainer</a> for HPC tasks. The final docker image clocked in at over 14 GB in size. I tried to reduce this but only managed to trim off about half a gigabyte.
@@ -286,8 +291,8 @@ Another concern is that this docker image does not cache the Hasktorch library b
 </p>
 </div>
 </div>
-<div id="outline-container-org5a4fda7" class="outline-3">
-<h3 id="org5a4fda7"><span class="section-number-3">2.2.</span> Goal Core</h3>
+<div id="outline-container-org2a103e0" class="outline-3">
+<h3 id="org2a103e0"><span class="section-number-3">2.2.</span> Goal Core</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Core primarily contains functions that are thin wrappers around their Hasktorch counterparts in <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Vector.hs">Vector.hs</a>. If a required function was not provided by Hasktorch, I wrote it using Hasktorch primitives.
@@ -345,8 +350,8 @@ Unlike in the <code>hmatrix</code> version, however, when checking for convergen
 </p>
 </div>
 
-<div id="outline-container-org0eec892" class="outline-4">
-<h4 id="org0eec892"><span class="section-number-4">2.2.1.</span> Test suite</h4>
+<div id="outline-container-org26de63d" class="outline-4">
+<h4 id="org26de63d"><span class="section-number-4">2.2.1.</span> Test suite</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 I wrote a <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/2e8b8fd09c026426546459acb3c5ae252e57631e/core/test/Spec.hs">suite of unit tests</a> for the functions in <code>Core</code>. The suite caught errors that were missed by the type system (I used Hasktorch&rsquo;s untyped API), such as vector shape errors, and conflating CPU and CUDA tensors. A few functions in <code>Core</code> internally use Hasktorch factory functions which create tensors on the CPU by default, so the test suite was particularly helpful in identifying the functions with these errors.
@@ -354,12 +359,12 @@ I wrote a <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/2e8b8fd09c0264
 </div>
 </div>
 </div>
-<div id="outline-container-org1984c46" class="outline-3">
-<h3 id="org1984c46"><span class="section-number-3">2.3.</span> Goal Geometry</h3>
+<div id="outline-container-org9c5283e" class="outline-3">
+<h3 id="org9c5283e"><span class="section-number-3">2.3.</span> Goal Geometry</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org1da1c74" class="outline-4">
-<h4 id="org1da1c74"><span class="section-number-4">2.3.1.</span> Runtime exceptions</h4>
+<div id="outline-container-orgbbf7fa0" class="outline-4">
+<h4 id="orgbbf7fa0"><span class="section-number-4">2.3.1.</span> Runtime exceptions</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 The runtime exceptions due to the mixing or CPU and CUDA tensors was resolved, but we decided to add another type parameter for the device on which a tensor is initialized. As a result, the syntax was not as clean, but the type safety is probably worth it. The unit test suite picked up some new errors after this change - certain data types are not supported for all operations on the GPU. For example, matrix multiplication only works with floating types. <code>Goal</code> only uses floating types with <code>Point</code> s on a <code>Manifold</code>, so this wouldn&rsquo;t present any problems, but one possible way of conditionally constraining data types depending on the device follows:
@@ -389,11 +394,11 @@ The above includes a helpful error message if someone were to use an unsupported
 </div>
 </div>
 
-<div id="outline-container-orgbfd6c30" class="outline-4">
-<h4 id="orgbfd6c30"><span class="section-number-4">2.3.2.</span> Performance benchmarks</h4>
+<div id="outline-container-org874bae8" class="outline-4">
+<h4 id="org874bae8"><span class="section-number-4">2.3.2.</span> Benchmarks</h4>
 </div>
-<div id="outline-container-org258dd0c" class="outline-4">
-<h4 id="org258dd0c"><span class="section-number-4">2.3.3.</span> Profiling</h4>
+<div id="outline-container-org944fd5b" class="outline-4">
+<h4 id="org944fd5b"><span class="section-number-4">2.3.3.</span> Profiling</h4>
 <div class="outline-text-4" id="text-2-3-3">
 <p>
 After implementing most of the code in <code>goal-graphical</code>, I was able to profile a script. I discovered that there was a serious flaw in my implementation of <code>l2Norm</code>:
@@ -426,15 +431,15 @@ In the above code, I create a (non-sparse) tensor of zeros to use with Hasktorch
 </div>
 </div>
 
-<div id="outline-container-orga523a3a" class="outline-3">
-<h3 id="orga523a3a"><span class="section-number-3">2.4.</span> Goal Probability</h3>
+<div id="outline-container-orge84d15f" class="outline-3">
+<h3 id="orge84d15f"><span class="section-number-3">2.4.</span> Goal Probability</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 This was the most challenging goal package to implement, and several outstanding issues remain.
 </p>
 </div>
-<div id="outline-container-org82baaed" class="outline-4">
-<h4 id="org82baaed"><span class="section-number-4">2.4.1.</span> Random tensors</h4>
+<div id="outline-container-orgc12bd0b" class="outline-4">
+<h4 id="orgc12bd0b"><span class="section-number-4">2.4.1.</span> Random tensors</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 I <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Random.hs">structured the code</a> to randomly generate tensors using <code>Hasktorch</code> instead of <code>RandomMWC</code>. For example, the following generates a <code>Vector</code> of Bernoulli random variables:
@@ -453,8 +458,8 @@ I <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e04
 </div>
 </div>
 
-<div id="outline-container-org4781f3c" class="outline-4">
-<h4 id="org4781f3c"><span class="section-number-4">2.4.2.</span> Runtime exceptions</h4>
+<div id="outline-container-org8f0efbd" class="outline-4">
+<h4 id="org8f0efbd"><span class="section-number-4">2.4.2.</span> Runtime exceptions</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 I debugged the runtime exceptions here with <code>ghc-debug</code> by running <code>:set -fbreak-on-error</code> in a repl, followed by <code>:trace</code>. This was an enormous help, although it did take some getting used to.
@@ -469,16 +474,25 @@ The second exception was due to a faulty implementation of <code>lowerTriangular
 </p>
 </div>
 </div>
-<div id="outline-container-org761cdc6" class="outline-4">
-<h4 id="org761cdc6"><span class="section-number-4">2.4.3.</span> Profiling</h4>
+<div id="outline-container-org513da9b" class="outline-4">
+<h4 id="org513da9b"><span class="section-number-4">2.4.3.</span> Benchmarks</h4>
 <div class="outline-text-4" id="text-2-4-3">
+<p>
+The plan was to benchmark backpropagation, but instead I only benchmarked the forward pass.
+</p>
+<iframe width="900" height="1200" src="backprop.html" title="profiling"></iframe>
+</div>
+</div>
+<div id="outline-container-orgddcc928" class="outline-4">
+<h4 id="orgddcc928"><span class="section-number-4">2.4.4.</span> Profiling</h4>
+<div class="outline-text-4" id="text-2-4-4">
 <iframe width="900" height="650" src="script.prof.html" title="profiling"></iframe>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1dfceee" class="outline-2">
-<h2 id="org1dfceee"><span class="section-number-2">3.</span> Future Work</h2>
+<div id="outline-container-org04194d1" class="outline-2">
+<h2 id="org04194d1"><span class="section-number-2">3.</span> Future Work</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>Developer setup
@@ -502,7 +516,7 @@ The second exception was due to a faulty implementation of <code>lowerTriangular
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2022-09-07 Wed 20:46</p>
+<p class="date">Created: 2022-09-07 Wed 21:21</p>
 </div>
 </body>
 </html>
