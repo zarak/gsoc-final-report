@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-11 Sun 19:27 -->
+<!-- 2022-09-12 Mon 20:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Google Summer of Code Final Report</title>
@@ -204,42 +204,42 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7ba95e5">1. Overview</a></li>
-<li><a href="#orgd81afb8">2. Working Period</a>
+<li><a href="#orgaf2d3c6">1. Overview</a></li>
+<li><a href="#orge6905ca">2. Working Period</a>
 <ul>
-<li><a href="#org99a66fa">2.1. Developer setup</a></li>
-<li><a href="#org06c1733">2.2. Goal Core</a>
+<li><a href="#org4b81325">2.1. Developer setup</a></li>
+<li><a href="#orgbfeba85">2.2. Goal Core</a>
 <ul>
-<li><a href="#org702f6e2">2.2.1. Test suite</a></li>
+<li><a href="#org0194f9d">2.2.1. Test suite</a></li>
 </ul>
 </li>
-<li><a href="#org1f71441">2.3. Goal Geometry</a>
+<li><a href="#org8516bfe">2.3. Goal Geometry</a>
 <ul>
-<li><a href="#orgfeacdc8">2.3.1. Runtime exceptions</a></li>
-<li><a href="#org99ed6ab">2.3.2. Benchmarks</a></li>
-<li><a href="#org694f1fb">2.3.3. Profiling</a></li>
+<li><a href="#org7955027">2.3.1. Runtime exceptions</a></li>
+<li><a href="#orgb43002d">2.3.2. Benchmarks</a></li>
+<li><a href="#org686c936">2.3.3. Profiling</a></li>
 </ul>
 </li>
-<li><a href="#org9c8da09">2.4. Goal Probability</a>
+<li><a href="#org1c8982e">2.4. Goal Probability</a>
 <ul>
-<li><a href="#org05160ce">2.4.1. Random tensors</a></li>
-<li><a href="#orgdefbd94">2.4.2. Runtime exceptions</a></li>
-<li><a href="#org5f364e5">2.4.3. Benchmarks</a></li>
-<li><a href="#orgba961bd">2.4.4. Profiling</a></li>
+<li><a href="#org809957d">2.4.1. Random tensors</a></li>
+<li><a href="#orga7f8005">2.4.2. Runtime exceptions</a></li>
+<li><a href="#org3a77295">2.4.3. Benchmarks</a></li>
+<li><a href="#orgab31534">2.4.4. Profiling</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4fe4425">3. Future Work</a></li>
+<li><a href="#orgc17a662">3. Future Work</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7ba95e5" class="outline-2">
-<h2 id="org7ba95e5"><span class="section-number-2">1.</span> Overview</h2>
+<div id="outline-container-orgaf2d3c6" class="outline-2">
+<h2 id="orgaf2d3c6"><span class="section-number-2">1.</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
 
-<div id="orgacc21e1" class="figure">
+<div id="org4ba1edb" class="figure">
 <p><img src="./haskell-logo.svg" alt="haskell-logo.svg" class="org-svg" />
 </p>
 </div>
@@ -250,12 +250,12 @@ This is the final report for a <a href="https://summerofcode.withgoogle.com/prog
 </div>
 </div>
 
-<div id="outline-container-orgd81afb8" class="outline-2">
-<h2 id="orgd81afb8"><span class="section-number-2">2.</span> Working Period</h2>
+<div id="outline-container-orge6905ca" class="outline-2">
+<h2 id="orge6905ca"><span class="section-number-2">2.</span> Working Period</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org99a66fa" class="outline-3">
-<h3 id="org99a66fa"><span class="section-number-3">2.1.</span> Developer setup</h3>
+<div id="outline-container-org4b81325" class="outline-3">
+<h3 id="org4b81325"><span class="section-number-3">2.1.</span> Developer setup</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 I originally planned to create a nix shell for development. During the proposal period I experimented with Hasktorch and Goal using a nix <a href="https://github.com/zarak/glowing-train">template</a> provided by Hastorch. Ultimately, however, we settled on Docker for the dev environment, as it may be more straightforward to use with <a href="https://apptainer.org/">Apptainer</a> for HPC tasks. The final docker image clocked in at over 14 GB in size. I tried to reduce this but only managed to trim off about half a gigabyte.
@@ -291,8 +291,8 @@ This docker image does not cache the Hasktorch library build artifacts, which me
 </p>
 </div>
 </div>
-<div id="outline-container-org06c1733" class="outline-3">
-<h3 id="org06c1733"><span class="section-number-3">2.2.</span> Goal Core</h3>
+<div id="outline-container-orgbfeba85" class="outline-3">
+<h3 id="orgbfeba85"><span class="section-number-3">2.2.</span> Goal Core</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Core primarily contains functions that are thin wrappers around their Hasktorch counterparts in <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Vector.hs">Vector.hs</a>. If a required function was not provided by Hasktorch, I wrote it using Hasktorch primitives.
@@ -350,8 +350,8 @@ Unlike in the <code>hmatrix</code> version, however, when checking for convergen
 </p>
 </div>
 
-<div id="outline-container-org702f6e2" class="outline-4">
-<h4 id="org702f6e2"><span class="section-number-4">2.2.1.</span> Test suite</h4>
+<div id="outline-container-org0194f9d" class="outline-4">
+<h4 id="org0194f9d"><span class="section-number-4">2.2.1.</span> Test suite</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 I wrote a <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/2e8b8fd09c026426546459acb3c5ae252e57631e/core/test/Spec.hs">suite of unit tests</a> for the functions in <code>Core</code>. The suite caught errors that were missed by the type system (I used Hasktorch&rsquo;s untyped API), such as vector shape errors, and conflating CPU and CUDA tensors. A few functions in <code>Core</code> internally use Hasktorch factory functions which create tensors on the CPU by default, so the test suite was particularly helpful in identifying the functions with these errors.
@@ -359,12 +359,12 @@ I wrote a <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/2e8b8fd09c0264
 </div>
 </div>
 </div>
-<div id="outline-container-org1f71441" class="outline-3">
-<h3 id="org1f71441"><span class="section-number-3">2.3.</span> Goal Geometry</h3>
+<div id="outline-container-org8516bfe" class="outline-3">
+<h3 id="org8516bfe"><span class="section-number-3">2.3.</span> Goal Geometry</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-orgfeacdc8" class="outline-4">
-<h4 id="orgfeacdc8"><span class="section-number-4">2.3.1.</span> Runtime exceptions</h4>
+<div id="outline-container-org7955027" class="outline-4">
+<h4 id="org7955027"><span class="section-number-4">2.3.1.</span> Runtime exceptions</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 The runtime exceptions due to the mixing or CPU and CUDA tensors was resolved, but we decided to add another type parameter for the device on which a tensor is initialized. As a result, the syntax was not as clean, but the type safety is probably worth it. The unit test suite picked up some new errors after this change - certain data types are not supported for all operations on the GPU. For example, matrix multiplication only works with floating types. <code>Goal</code> only uses floating types with <code>Points</code> on a <code>Manifold</code>, so this wouldn&rsquo;t present any problems, but one possible way of conditionally constraining data types depending on the device follows:
@@ -394,8 +394,8 @@ The above includes a helpful error message if someone were to use an unsupported
 </div>
 </div>
 
-<div id="outline-container-org99ed6ab" class="outline-4">
-<h4 id="org99ed6ab"><span class="section-number-4">2.3.2.</span> Benchmarks</h4>
+<div id="outline-container-orgb43002d" class="outline-4">
+<h4 id="orgb43002d"><span class="section-number-4">2.3.2.</span> Benchmarks</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 After propagating the hasktorch primitives through the Geometry package, I ran some benchmarks comparing the original goal backend to both the CPU and CUDA based hasktorch backends. There isn&rsquo;t a large difference between the CPU performance, but the GPU shows a substantial performance boost across the board.
@@ -405,11 +405,11 @@ After propagating the hasktorch primitives through the Geometry package, I ran s
 </div>
 </div>
 
-<div id="outline-container-org694f1fb" class="outline-4">
-<h4 id="org694f1fb"><span class="section-number-4">2.3.3.</span> Profiling</h4>
+<div id="outline-container-org686c936" class="outline-4">
+<h4 id="org686c936"><span class="section-number-4">2.3.3.</span> Profiling</h4>
 <div class="outline-text-4" id="text-2-3-3">
 <p>
-After implementing most of the code in <code>goal-graphical</code>, I was able to profile the <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/scripts/gradient-descent/gradient-descent-hasktorch.hs">gradient-descent script</a>. I discovered that there was a serious flaw in my implementation of <code>l2Norm</code>:
+After implementing most of the code in <code>goal-graphical</code>, I was able to profile the <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/scripts/gradient-descent/gradient-descent-hasktorch.hs">gradient-descent script</a>. I discovered that there was a flaw in my implementation of <code>l2Norm</code>:
 </p>
 
 <div class="org-src-container">
@@ -439,16 +439,16 @@ In the above code, I create a (non-sparse) tensor of zeros to use with Hasktorch
 </div>
 </div>
 
-<div id="outline-container-org9c8da09" class="outline-3">
-<h3 id="org9c8da09"><span class="section-number-3">2.4.</span> Goal Probability</h3>
+<div id="outline-container-org1c8982e" class="outline-3">
+<h3 id="org1c8982e"><span class="section-number-3">2.4.</span> Goal Probability</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
-This was the most challenging goal package to implement, and several outstanding issues remain. One problem is that a neural network using the hasktorch backend does not learn at all if there are multiple neurons in a layer. It does, however, learn if there is only a single neuron - essentially a logistic regression. This suggests a bug in the implementation of <code>Replicated Manifolds</code>. There may be an incorrect reshaping operation where a <code>Vector</code> is not constructed in row major order. I was not able to diagnose the problem after nearly a week of troubleshooting, so I proceeded to benchmarking and profiling.
+This was the most challenging goal package to implement, and several outstanding issues remain. One problem is that a neural network using the hasktorch backend does not learn at all if there are multiple neurons in a layer. It does, however, learn if there is only a single neuron in the hidden layer. This suggests a bug in the implementation of <code>Replicated Manifolds</code>. There may be an incorrect reshaping operation where a <code>Vector</code> is not constructed in row major order. I was not able to diagnose the problem after nearly a week of troubleshooting, so I proceeded to benchmarking and profiling.
 </p>
 </div>
 
-<div id="outline-container-org05160ce" class="outline-4">
-<h4 id="org05160ce"><span class="section-number-4">2.4.1.</span> Random tensors</h4>
+<div id="outline-container-org809957d" class="outline-4">
+<h4 id="org809957d"><span class="section-number-4">2.4.1.</span> Random tensors</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 I <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/b6fa159574f2fc67481e046b537b0cffe222d8d9/core/Goal/Core/Hasktorch/Random.hs">structured the code</a> to randomly generate tensors using <code>Hasktorch</code> instead of <code>RandomMWC</code>. For example, the following generates a <code>Vector</code> of Bernoulli random variables:
@@ -471,8 +471,8 @@ The implementation of <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9
 </div>
 </div>
 
-<div id="outline-container-orgdefbd94" class="outline-4">
-<h4 id="orgdefbd94"><span class="section-number-4">2.4.2.</span> Runtime exceptions</h4>
+<div id="outline-container-orga7f8005" class="outline-4">
+<h4 id="orga7f8005"><span class="section-number-4">2.4.2.</span> Runtime exceptions</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 I debugged the runtime exceptions here with <code>ghc-debug</code> by running <code>:set -fbreak-on-error</code> in a repl, followed by <code>:trace</code>. This was an enormous help, although it did take some getting used to.
@@ -487,8 +487,8 @@ The second exception was due to a faulty implementation of <code>lowerTriangular
 </p>
 </div>
 </div>
-<div id="outline-container-org5f364e5" class="outline-4">
-<h4 id="org5f364e5"><span class="section-number-4">2.4.3.</span> Benchmarks</h4>
+<div id="outline-container-org3a77295" class="outline-4">
+<h4 id="org3a77295"><span class="section-number-4">2.4.3.</span> Benchmarks</h4>
 <div class="outline-text-4" id="text-2-4-3">
 <p>
 The plan was to benchmark backpropagation, but instead I only benchmarked the forward pass.
@@ -497,15 +497,15 @@ The plan was to benchmark backpropagation, but instead I only benchmarked the fo
 <iframe width="900" height="1600" src="backprop.html" title="profiling"></iframe>
 
 <p>
-The performance is substantially worse using the hasktorch backend, which is suprising given that a forward pass is essentially a series of simple matrix operations. The problem may lie with the <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/geometry/Goal/Geometry/Hasktorch/Map/Linear.hs#L283">&gt;$&gt;</a> which is basically a wrapper for the <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/core/Goal/Core/Hasktorch/Vector.hs#L593-604">matrixMap</a> and similar functions. This function takes a list of <code>Vectors</code> and performs the <code>map</code> operation as a matrix multiplication. The resulting matrix is split into a list of <code>Vector</code> s which may not be very efficient, so once more we turn to profiling.
+The performance is substantially worse using the hasktorch backend, which is suprising given that a forward pass is essentially a series of simple matrix operations. The problem may lie with the <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/geometry/Goal/Geometry/Hasktorch/Map/Linear.hs#L283">&gt;$&gt;</a> operator, which is basically a wrapper for <a href="https://gitlab.com/sacha-sokoloski/goal/-/blob/a9dde905ab739ba314075fb1364fece32b3099b6/core/Goal/Core/Hasktorch/Vector.hs#L593-604">matrixMap</a> and similar functions. This function takes a list of <code>Vectors</code> and performs the <code>map</code> operation as a matrix-matrix multiplication. The resulting matrix is split into a list of <code>Vectors</code> which may not be very efficient, so once more we turn to profiling.
 </p>
 </div>
 </div>
-<div id="outline-container-orgba961bd" class="outline-4">
-<h4 id="orgba961bd"><span class="section-number-4">2.4.4.</span> Profiling</h4>
+<div id="outline-container-orgab31534" class="outline-4">
+<h4 id="orgab31534"><span class="section-number-4">2.4.4.</span> Profiling</h4>
 <div class="outline-text-4" id="text-2-4-4">
 <p>
-Unlike in <code>Goal Geometry</code> where it was easy to identity a single function (<code>l2Norm</code>) that had poor performance, here an obvious bottleneck was harder for me to identity.
+Unlike in <code>Goal Geometry</code> where it was easy to identity a single function (<code>l2Norm</code>) that had poor performance, here an obvious bottleneck (that is, limited to one or a few functions) was harder for me to identity.
 </p>
 
 <p>
@@ -522,7 +522,7 @@ There are calls to <code>retryWithGC'</code> each time a Hasktorch tensor is use
 </p>
 
 <p>
-The CUDA backend shows the same problem. I don&rsquo;t have a good enough grasp on the low level details of Haskell to analyze this further at this time, but it&rsquo;s something I shall to return to soon.
+The CUDA backend shows the same problem. I don&rsquo;t have a good enough grasp on the low level details to analyze this further at this time, but it&rsquo;s something I shall to return to soon.
 </p>
 <iframe width="1200" height="294" src="hasktorch-goal-cuda.svg" title="profiling"></iframe>
 
@@ -534,8 +534,8 @@ What&rsquo;s clear is that performing the matrix operations involved in the forw
 </div>
 </div>
 
-<div id="outline-container-org4fe4425" class="outline-2">
-<h2 id="org4fe4425"><span class="section-number-2">3.</span> Future Work</h2>
+<div id="outline-container-orgc17a662" class="outline-2">
+<h2 id="orgc17a662"><span class="section-number-2">3.</span> Future Work</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>There are a few functions that have yet to be implemented in <code>Goal Core</code>, such as <code>pseudo inverse</code></li>
@@ -554,7 +554,7 @@ What&rsquo;s clear is that performing the matrix operations involved in the forw
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zarak Mahmud</p>
-<p class="date">Created: 2022-09-11 Sun 19:27</p>
+<p class="date">Created: 2022-09-12 Mon 20:18</p>
 </div>
 </body>
 </html>
